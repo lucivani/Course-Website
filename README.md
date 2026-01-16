@@ -28,7 +28,6 @@
    pip install Flask
    pip install Flask-SQLAlchemy
    pip install Flask-Bcrypt
-   pip install Flask-WTF
    ```
 4. Run the web by typing the following command ```flask run```. If you have the debugger disabled or trust the users on your network, you can make the server publicly available simply by adding ```--host=0.0.0.0``` to the command line (```flask run --host=0.0.0.0```)
 5. Visit that URL in your browser to view the website
