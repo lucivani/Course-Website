@@ -38,3 +38,6 @@
 - The database for each data has been created with the database model in Flask and can be accessed in instance folder.
 - On subscription form pages, meal type and delivery days can be chosen more than one. To choose multiple item, press ```Command (⌘)``` + Click item for macOS or ```Ctrl``` + Click item.
 
+## Setting Up Instructors and Students Account
+1. There are 2 instructors accounts have been made. The first account using username and password ```instructor1```. The second account using username and password ```instructor2 ```. User can directly login to instructors account with these credentials and can add another one by redirecting to register page.
+2. There are 2 students accounts have been made. The first account using username and password ```student1```. The second account using username and password ```student2 ```. User can directly login to students account with these credentials and can add another one by redirecting to register page.
