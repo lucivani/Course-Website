@@ -33,3 +33,9 @@
 4. Run the web by typing the following command ```flask run```. If you have the debugger disabled or trust the users on your network, you can make the server publicly available simply by adding ```--host=0.0.0.0``` to the command line (```flask run --host=0.0.0.0```)
 5. Visit that URL in your browser to view the website
 6. To quit the website, type CTRL+C to command prompt
+
+## Notifications for Environment
+- Secret key in the website is distinct when it comes to different devices. The user needs to change the string of the secret key. It should be a long random bytes or str. Copy the output of command ```python -c 'import secrets; print(secrets.token_hex())'``` to your config ```app.config['SECRET_KEY'] = 'output'``` gives the secret key needed.
+- The database for each data has been created with the database model in Flask and can be accessed in instance folder.
+- On subscription form pages, meal type and delivery days can be chosen more than one. To choose multiple item, press ```Command (⌘)``` + Click item for macOS or ```Ctrl``` + Click item.
+
