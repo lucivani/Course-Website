@@ -1,0 +1,57 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+	{% with messages = get_flashed_messages(with_categories = True) %}
+        {% if messages %}
+        <div class="flash_container">
+            {% for category, message in messages %}
+                {% if category != 'ERROR' %}
+                <div class="flash_check_item">
+                    <i class="fa fa-check flash_icon_check"></i>
+                </div>
+                <div class="flash_check_message">
+                    <p class="flash">{{ message }}</p>
+                </div>
+                {% else %}
+                <div class="flash_cross_item">
+                    <i class="fa fa-xmark flash_icon_cross"></i>
+                </div>
+                <div class="flash_cross_message">
+                    <p class="flash"><strong>{{ category }}: </strong>{{ message }}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+	<h2>Insert Student Marks</h2>
+	<form action="" method="post">
+	<div class="regrade">
+			<div class="regradebutton">
+				<select  name="id" required>
+					{% for stu in all_student %}
+					<option value="{{ stu.StuAcc }}">{{ stu.StuAcc }} - {{ stu.StuName }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="regradebutton">
+				<select  name="name" required>
+					<option value="Assignment1">Assignment 1</option>
+					<option value="Assignment2">Assignment 2</option>
+					<option value="Assignment3">Assignment 3</option>
+					<option value="Midterm">Midterm</option>
+					<option value="Finals">Finals</option>
+				</select>
+			</div>
+			<div class="regradebutton">
+				<input  type="number" name="marks" min=0 max=100 required>
+			</div>
+			<div class="regradebutton">
+				<input  type="submit">
+			</div>
+	</div>
+	</form>
+{% endblock %}

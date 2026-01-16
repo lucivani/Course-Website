@@ -1,0 +1,69 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+        <h2>Labs</h2>
+        <p class="tab">
+            This section contains the tutorial exercises. 
+            Tutorials are held every week. 
+            Please make use of this valuable resource!
+        </p>
+
+        <div class="assignments">
+            <div class="item1">Week 1</div>
+            <div class="item2"><a href="Tutorial_Week_1.pdf"><u>Exercise 1</u></a></div>
+            <div class="item3"><a href="Week_01_soln.py"><u>Solution Week 1</u></a></div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 2</div>
+            <div class="item2"><a href="Tutorial_Week_2.pdf"><u>Exercise 2</u></a></div>
+            <div class="item3"><a href="Week_02_soln.pdf"><u>Solution Week 2</u></a></div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 3</div>
+            <div class="item2"><a href="Tutorial_Week_3.pdf"><u>Exercise 3</u></a></div>
+            <div class="item3"><a href="Week_03_soln.sql"><u>Solution Week 3</u></a></div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 4</div>
+            <div class="item2"><a href="Tutorial_Week_4.pdf"><u>Exercise 4</u></a></div>
+            <div class="item3"><a href="week04soln-html.html"><u>Solution Week 4</u></a></div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 5</div>
+            <div class="item2">TBA</div>
+            <div class="item3">TBA</div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 6</div>
+            <div class="item2"><a href="Tutorial_Week_6.pdf"><u>Exercise 6</u></a></div>
+            <div class="item3"><a href="Week_06_soln.html"><u>Solution Week 6</u></a></div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 7</div>
+            <div class="item2"><a href="Tutorial_Week_7.pdf"><u>Exercise 7</u></a></div>
+            <div class="item3"><a href="week07soln.html"><u>Solution Week 7</u></a></div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 8</div>
+            <div class="item2"><a href="Tutorial_Week_8.pdf"><u>Exercise 8</u></a></div>
+            <div class="item3">TBA</div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 9</div>
+            <div class="item2">TBA</div>
+            <div class="item3">TBA</div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 10</div>
+            <div class="item2">TBA</div>
+            <div class="item3">TBA</div>
+        </div>
+        <div class="assignments">
+            <div class="item1">Week 11</div>
+            <div class="item2">TBA</div>
+            <div class="item3">TBA</div>
+        </div>
+{% endblock %}

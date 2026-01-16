@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Assignment 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+	<div class="body">
+    <div class="main2">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash_container">
+            {% for category, message in messages %}
+                {% if category == 'login' %}
+                <div class="flash_check_item">
+                    <i class="fa fa-check flash_icon_check"></i>
+                </div>
+                <div class="flash_check_message">
+                    <p class="flash">{{ message }}</p>
+                </div>
+                {% else %}
+                <div class="flash_cross_item">
+                    <i class="fa fa-xmark flash_icon_cross"></i>
+                </div>
+                <div class="flash_cross_message">
+                    {% if category == 'ERROR' %}
+                    <p class="flash"><strong>{{ category }}: </strong>{{ message }}</p>
+                    {% else %}
+                    <p class="flash">{{ message }}</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <h1 class="header">Login</h1>
+        <form class="login" action="{{ url_for('login') }}" method="POST">
+            <input type="text" id="Username" name="Username" placeholder="Username" required>
+            <input type="password" id="Password" name="Password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p class="link">Don't have an account? <a href="{{ url_for('register') }}"><strong>Register</strong></a></p>
+    </div>
+</body>
+</html>

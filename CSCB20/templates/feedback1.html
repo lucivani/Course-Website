@@ -1,0 +1,80 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+        <span class="h2">Feedback</span>
+		<p>Here are your feedbacks</p>
+		{% for note in all_feedback %}
+		<div class="reviews">
+			<div class="review">
+				{% if note.View == 0 %}
+				<div class="{{note.FID}}"><p class="markview"></p></div>
+				{% endif %}
+				<div id="rev">
+					<div>
+						<h4>
+							{% if note.Question == 1 %}
+								What do you like about the instructor’s teaching?
+							{% elif note.Question == 2 %}
+								What do you recommend the instructor to do to improve their teaching?
+							{% elif note.Question == 3 %}
+								What do you like about the labs?
+							{% else %}
+								What do you recommend the lab instructors to do to improve their lab teaching?
+							{% endif %}
+						</h4>
+					</div>
+					<div><span>{{ note.Title }}</span></div>
+				</div>
+				<div id="time">
+					<div><span>Posted on:</span></div>
+					<div><span>{{ note.Submitted }}</span></div>
+				</div>
+			</div>
+			<div class="hiddenrev">
+				<div><p>{{ note.content }}</p></div>
+				{% if note.View == 0 %}
+				<div>
+					<button onclick="markread({{note.FID}})" class="{{note.FID}}">Mark as Reviewed</button>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		{% endfor %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		var r = document.getElementsByClassName("review");
+		var i;
+		for (i = 0; i < r.length; i++) {
+			r[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.display === "flex") {
+				content.style.display = "none";
+			} else {
+				content.style.display = "flex";
+			}
+			});
+		}
+		function markread(id) {
+			$.ajax({
+				url: '/markview',
+				type: 'POST',
+				data: { 'id': id },
+				success: function(response) {
+					var i;
+					var content = document.getElementsByClassName(response);
+					for (i = content.length - 1; i >= 0; i--) {
+							content[i].remove();
+					}
+				},
+				error: function(error) {
+					console.log(error);
+				}
+			});
+		}
+	</script>
+{% endblock %}
+    

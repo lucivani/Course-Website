@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Assignment 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+	<div class="body">
+    <div class="main2">
+        {% with messages = get_flashed_messages(with_categories = True) %}
+        {% if messages %}
+        <div class="flash_container">
+            {% for category, message in messages %}
+                <div class="flash_cross_item">
+                    <i class="fa fa-xmark flash_icon_cross"></i>
+                </div>
+                <div class="flash_cross_message">
+                    <p class="flash"><strong>{{ category }}: </strong>{{ message }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        <h1 class="login">Sign Up</h1>
+        <form action="{{ url_for('register') }}" method="POST">
+            <p class="signup">Which one are you?</p>
+            <div class="register">
+                <div class="role">
+                    <input type="radio" id="RoleStudent" name="Role" value="RoleStudent">
+                    <label for="RoleStudent">Student</label><br>
+                </div>
+                <div class="role">
+                    <input type="radio" id="RoleInstructor" name="Role" value="RoleInstructor">
+                    <label for="RoleInstructor">Instructor</label><br>
+                </div>
+            </div>
+            <br>
+            <p class="signup">Create ID</p>
+            <div class="login">
+                <input type="text" id="Username" name="Username" placeholder="Username" required>
+				<input type="text" id="FullName" name="FullName" placeholder="Full Name" required>
+                <input type="password" id="Password" name="Password" placeholder="Password" required>
+                <input type="password" id="ConfirmPass" name="ConfirmPass" placeholder="Confirm Password" required>
+                <button class="button" type="submit">Register</button>
+            </div>
+            <p class="link">Already have an account? <a href="{{ url_for('login') }}"><b>Login</b></a></p>
+        </form>
+    </div>
+</body>
+</html>

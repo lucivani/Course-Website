@@ -1,0 +1,52 @@
+<html>
+<body>
+
+
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+		{% block content %}
+
+			{% with messages = get_flashed_messages() %}
+			{% if session.name %}
+				{% if messages %}
+					{% for message in messages %}
+						<h1 class="welcome">Welcome back, {{ session.name }}! {{ message }}</h1>
+					{% endfor %}
+				{% else %}
+					<h1 class="welcome">Welcome {{ session.name }} to CSCB20 Website!</h1>
+				{% endif %}
+
+				<main>
+					<h1>CSCB20</h1>
+					<p>Introduction to Databases and Web Application</p>
+					<p>Welcome </p>
+				</main>
+
+				<span class="h2">Course Description</span>
+				<p>A practical introduction to databases and Web app development. Databases: terminology and applications; creating, querying and updating databases; the entity-relationship model for database design. Web documents and applications: static and interactive documents; Web servers and dynamic server-generated content; Web application development and interface with databases.</p>
+				<p class="tab"><b>Prerequisite:</b> Some experience with programming in an imperative language such as Python, Java or C.</p>
+				<p class="tab"><b>Exclusion:</b> This course may not be taken after - or concurrently with - any C- or D-level CSC course.</p>
+				<span class="h2">Instructor</span>
+				<div class="instructor">
+					<div class="teacher"><p>Purva Gawde</p></div>
+					<div class="details">
+						<div><p><b>Email:</b></p></div>
+						<div><p><u><a href="mailto:purva.gawde@utoronto.ca">purva.gawde@utoronto.ca</a></u></p></div>
+					</div>
+					<div class="details">
+						<div><p><b>Office Hours:</b></p></div>
+						<div><p>IA 4056, Monday, 11.00 to 12.00</p></div>
+					</div>
+					<div class="details">
+						<div><p><b>Lectures:</b></p></div>
+						<div><p>Friday, 9.00 to 11.00</p></div>
+					</div>
+				</div>
+			{% endif %}
+			{% endwith %}
+		{% endblock %}
+</body>
+</html>

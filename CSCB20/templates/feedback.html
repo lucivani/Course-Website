@@ -1,0 +1,31 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+
+        <span class="h2">Feedback</span>
+		<div class="feedback">
+			<div>
+				<p>Feel free to give anonymous feedback!</p>
+			</div>
+			<div>
+				<select>
+					<option>Course Material</option>
+					<option>Professor</option>
+					<option>Teaching Assistant</option>
+					<option>Others</option>
+				</select>
+			</div>
+			<div class="textarea">
+				<textarea></textarea>
+			</div>
+			<div>
+				<form action='feedback.html'>
+					<input type="submit">
+				</form>
+			</div>
+		</div>
+{% endblock %}
+    

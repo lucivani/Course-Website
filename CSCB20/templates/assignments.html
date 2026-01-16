@@ -1,0 +1,23 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+        <h2>Assignments</h2>
+        <p>
+            Here are the assignment and due dates. I will be posting the assignment handouts here.
+            All assignments will be submitted on <a href="https://markus2.utsc.utoronto.ca"><u>MarkUs</u></a>
+        </p>
+        <div class="assignments">
+            <div class="item1">Assignment 1</div>
+            <div class="item2"><a href="{{ url_for('assignment1') }}"><u>Assignment 1 Handout</u></a></div>
+            <div class="item3">Due Date : <a href="calendar.html"><u>February 11th at 11:59</u></a></div>
+        </div>
+        <br>
+        <div class="assignments">
+            <div class="item1">Assignment 2</div>
+            <div class="item2"><a href="{{ url_for('assignment2') }}"><u>Assignment 2 Handout</u></a></div>
+            <div class="item3">Due Date : <a href="calendar.html"><u>March 12th at 11:59</u></a></div>
+        </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+	<h2>Remark Details</h2>
+	<p>Student Account: {{ remarkview.Student.StuAcc }}</p>
+	<p>Student Name: {{ remarkview.Student.StuName }}</p>
+	<p>Submitted on: {{ remarkview.Remarks.Submitted }}</p>
+	<p id="status">Status: {{ remarkview.Remarks.Status }}</p>
+	<p>Reason:</p>
+	<p>{{ remarkview.Remarks.Reason }}</p>
+	{% if remarkview.Remarks.Status == 'Pending' %}
+		<button onclick="send('Approved-{{remarkview.Remarks.RID}}')" class="viewbutton">
+			Approved
+		</button>
+		<button onclick="send('Rejected-{{remarkview.Remarks.RID}}')" class="viewbutton">
+			Reject
+		</button>
+	{% endif %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		function send(value) {
+				$.ajax({
+                url: '/remarkreq2',
+                type: 'POST',
+                data: { 'data': value },
+                success: function(response) {
+					var status = response.split('-')[0];
+					var id = response.split('-')[1];
+                    var div1 = document.getElementsByTagName('button');
+					var i;
+					for (i = div1.length - 1; i >= 0; i--) {
+						div1[i].remove();
+					}
+					div1 = document.getElementById('status');
+					div1.innerHTML = "Status: " + status;
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+		}
+	</script>
+{% endblock %}

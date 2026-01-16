@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Assignment 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>   
+    <!-- <aside>Sidebar</aside> -->
+	<div class="body">
+    <div class="main2">
+		<nav class="navbar">
+
+            <!-- <div class="container"></div> -->
+                <div class="nav-links">
+					<div class="nav-link"><label><input type="checkbox" class="mode"><span>Change Mode</span></label></div>
+					<div class="nav-link"><a href="{{ url_for('logout') }}">Logout</a></div>
+                    <div class="nav-link"><a href="{{ url_for('index') }}">Home</a></div>
+                    <div class="nav-link info"><a href="#">Course Info</a>
+                        <div class="drop-down">
+                            <div class="dd"><a href="{{ url_for('static', filename='syllabus.pdf') }}">Syllabus</a></div>
+                            <div class="dd"><a href="{{ url_for('static', filename='note.pdf') }}">Lecture Notes</a></div>
+                            <div class="dd"><a href="{{ url_for('assignments') }}">Assignments</a></div>
+                            <div class="dd"><a href="{{ url_for('labs') }}">Labs</a></div>
+							<div class="dd"><a href="{{ url_for('tests') }}">Tests</a></div>
+                        </div>
+                    </div>
+					<div class="nav-link"><a href="{{ url_for('studentgrades') }}">Grades</a></div>
+					<div class="nav-link"><a href="{{ url_for('studentremark') }}">Remark</a></div>
+					<div class="nav-link info2"><a href="#">Resources</a>
+                        <div class="drop-down">
+                            <div class="dd"><a href="https://piazza.com">Piazza</a></div>
+                            <div class="dd"><a href="https://markus2.utsc.utoronto.ca/?locale=en">Markus</a></div>
+                        </div>
+                    </div>
+                    <div class="nav-link"><a href="{{ url_for('submit_feedback') }}">Anon Feedback</a></div>
+                    <div class="nav-link"><a href="{{ url_for('team') }}">Course Team</a></div>
+                    <div class="menu-button"><a href="#">Menu</a>
+						<div class="sidebar">
+							<div class="side-link"><a href="{{ url_for('index') }}">Home</a></div>
+							<div class="side-link"><a href="{{ url_for('static', filename='syllabus.pdf') }}">Syllabus</a></div>
+							<div class="side-link"><a href="{{ url_for('static', filename='note.pdf') }}">Lecture Notes</a></div>
+							<div class="side-link"><a href="{{ url_for('assignments') }}">Assignments</a></div>
+							<div class="side-link"><a href="{{ url_for('labs') }}">Labs</a></div>
+							<div class="side-link"><a href="{{ url_for('tests') }}">Tests</a></div>
+							<div class="side-link"><a href="{{ url_for('studentgrades') }}">View</a></div>
+							<div class="side-link"><a href="{{ url_for('studentremark') }}">Remark</a></div>
+							<div class="side-link"><a href="https://piazza.com">Piazza</a></div>
+							<div class="side-link"><a href="https://markus2.utsc.utoronto.ca/?locale=en">Markus</a></div>
+							<div class="side-link"><a href="{{ url_for('submit_feedback') }}">Anon Feedback</a></div>
+							<div class="side-link"><a href="{{ url_for('team') }}">Course Team</a></div>
+							<div class="side-link"><a href="{{ url_for('logout') }}">Logout</a></div>
+							<div class="side-link"><label><input type="checkbox" class="mode"><span>Change Mode</span></label></div>
+						</div>
+					</div>
+                </div>
+            <!-- </div>     -->
+        </nav>
+		<div id="container">
+		{% block content %}
+		{% endblock %}
+		</div>
+    </div>
+
+    <footer>
+        <p class="faculty-link"><a href="https://web.cs.toronto.edu/">Faculty of Computer Science at UofT</a></p>
+        <p> Site design by Lucia Giovani, Nathanael Sitepu, Shafira Devi</p>
+    </footer>
+	</div>
+</body>
+</html>

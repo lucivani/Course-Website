@@ -1,0 +1,285 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+        <h2>Grades</h2>
+        <div class="grades">
+			<h3> <u>Assignment 1</u> </h3>
+			<div class="assignment">
+				<div class="rows">
+					<div class="row">
+						<div id="left"><b>Account</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment1' %}
+								<div>{{ student.Student.StuAcc }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Student Name</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment1' %}
+								<div>{{ student.Student.StuName }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Submitted</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment1' %}
+								<div>{{ student.Assignments.Submitted.date() }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div id="right"><b>Score </b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment1' %}
+								<div class="{{student.Assignments.AID}}">{{ student.Assignments.Marks }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="form">
+					<div class="hidden"><b>a</b></div>
+					{% for student in all_result %}
+						{% if student.Assignments.Name == 'Assignment1' %}
+							<div>
+								<button onclick="input(this)">Regrade</button>
+								<input type="number" min=0 max=100 class="inputregrade" id="input" name="{{student.Assignments.AID}}">
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+			<h3> <u>Assignment 2</u> </h3>
+			<div class="assignment">
+				<div class="rows">
+					<div class="row">
+						<div id="left"><b>Account</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment2' %}
+								<div>{{ student.Student.StuAcc }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Student Name</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment2' %}
+								<div>{{ student.Student.StuName }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Submitted</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment2' %}
+								<div>{{ student.Assignments.Submitted.date() }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div id="right"><b>Score </b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment2' %}
+								<div class="{{student.Assignments.AID}}">{{ student.Assignments.Marks }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="form">
+					<div class="hidden"><b>a</b></div>
+					{% for student in all_result %}
+						{% if student.Assignments.Name == 'Assignment2' %}
+							<div>
+								<button onclick="input(this)">Regrade</button>
+								<input type="number" min=0 max=100 class="inputregrade" id="input" name="{{student.Assignments.AID}}">
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+			<h3> <u>Assignment 3</u> </h3>
+			<div class="assignment">
+				<div class="rows">
+					<div class="row">
+						<div id="left"><b>Account</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment3' %}
+								<div>{{ student.Student.StuAcc }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Student Name</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment3' %}
+								<div>{{ student.Student.StuName }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Submitted</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment3' %}
+								<div>{{ student.Assignments.Submitted.date() }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div id="right"><b>Score </b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Assignment3' %}
+								<div class="{{student.Assignments.AID}}">{{ student.Assignments.Marks }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="form">
+					<div class="hidden"><b>a</b></div>
+					{% for student in all_result %}
+						{% if student.Assignments.Name == 'Assignment3' %}
+							<div>
+								<button onclick="input(this)">Regrade</button>
+								<input type="number" min=0 max=100 class="inputregrade" id="input" name="{{student.Assignments.AID}}">
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+
+			<h3> <u>Midterm</u> </h3>
+			<div class="assignment">
+				<div class="rows">
+					<div class="row">
+						<div id="left"><b>Account</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Midterm' %}
+								<div>{{ student.Student.StuAcc }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Student Name</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Midterm' %}
+								<div>{{ student.Student.StuName }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Submitted</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Midterm' %}
+								<div>{{ student.Assignments.Submitted.date() }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div id="right"><b>Score </b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Midterm' %}
+								<div class="{{student.Assignments.AID}}">{{ student.Assignments.Marks }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="form">
+					<div class="hidden"><b>a</b></div>
+					{% for student in all_result %}
+						{% if student.Assignments.Name == 'Midterm' %}
+							<div>
+								<button onclick="input(this)">Regrade</button>
+								<input type="number" min=0 max=100 class="inputregrade" id="input" name="{{student.Assignments.AID}}">
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+
+			<h3> <u>Finals</u> </h3>
+			<div class="assignment">
+				<div class="rows">
+					<div class="row">
+						<div id="left"><b>Account</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Finals' %}
+								<div>{{ student.Student.StuAcc }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Student Name</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Finals' %}
+								<div>{{ student.Student.StuName }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div><b>Submitted</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Finals' %}
+								<div>{{ student.Assignments.Submitted.date() }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="row">
+						<div id="right"><b>Score</b></div>
+						{% for student in all_result %}
+							{% if student.Assignments.Name == 'Finals' %}
+								<div class="{{student.Assignments.AID}}">{{ student.Assignments.Marks }}</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+				<div class="form">
+					<div class="hidden"><b>a</b></div>
+					{% for student in all_result %}
+						{% if student.Assignments.Name == 'Finals' %}
+							<div>
+								<button onclick="input(this)">Regrade</button>
+								<input type="number" min=0 max=100 class="inputregrade" id="input" name="{{student.Assignments.AID}}">
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+	
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+			function input(e) {
+				e.setAttribute('id', 'input');
+				var i = $(e).siblings()[0];
+				i.removeAttribute('id');
+				
+			}
+			function regrade(id, marks) {
+					$.ajax({
+						url: '/change',
+						type: 'POST',
+						data: { 'id': id, 'marks': marks },
+						success: function(response) {
+							var content = document.getElementsByClassName(response[0])[0];
+							content.innerHTML = response[1];
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
+				}
+				$(document).ready(function() {
+					$('.inputregrade').keydown(function(event) {
+						if (event.key === 'Enter') {
+							regrade(this.name, this.value);
+							this.value = "";
+							input(this);
+						}
+					});
+				});
+		</script>
+{% endblock %}

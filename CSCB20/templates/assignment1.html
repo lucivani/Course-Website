@@ -1,0 +1,83 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+        <div class="assignmenttitle">SmartCity Initiative: Assignment 1</div><br>
+        <h2>Details</h2>
+        <div>
+            <b>Topics Covered</b> : Relational Algebra, SQLite <br>
+            <b>Due Date</b> : February 11th at 11:59 <br>
+            <b>Points</b> : 95 <br>
+        </div>
+        <br>
+        <h2>Instructions and Important Notes</h2>
+        <div>
+            <h3>Group Work</h3>
+            <ul>
+                <li><b>Group Size</b> : You must work in a group of two or three</li>
+                <li>
+                    <b>Group Declaration</b> : Ensure all group members are declared in
+                    <a href="https://markus2.utsc.utoronto.ca"><u>MarkUs</u></a> before submission
+                </li>
+            </ul>
+            <h3>Acknowledgment Statement</h3>
+            <p>Each group must include a paragraph in the A1.pdf file that</p>
+            <ul>
+                <li>Clearly states who worked on which parts of the assignment</li>
+                <li>Confirms that all work was completed by the group members without external help</li>
+            </ul>
+            <p>Example :<br></p>
+            <p class="tab">
+                <em>
+                    "We, [Student 1 Name] , [Student 2 Name]and [Student 3 Name], confirm that
+                    all parts of this assignment were completed collaboratively and without external
+                    assistance. [Student 1 Name] was primarily responsible for questions X and Y,
+                    while [Student 2 Name] focused on questions Z and W and [Student 3 Name] focused
+                    on questions P and Q. We shared responsibilities for testing and proofreading"
+                </em>
+            </p>
+            <h3>Submission Guidelines</h3>
+            <ul>
+                <li>
+                    <b>Testing Requirements</b>
+                    <ul>
+                        <li>Test all Relational Algebra solutions on <a href="https://dbis-uibk.github.io/relax/calc/local/uibk/local/0"><b>ReLax</b></a></li>
+                        <li>Test all SQL solutions on <b>SQLite</b></li>
+                    </ul>
+                </li>
+                <li>
+                    <b>No Schema Submission</b> : Do not submit the schema. The provided schema will be used to test your solutions.
+                </li>
+                <li>
+                    <b>Handwritten Solutions</b> : Will not be marked.
+                </li>
+                <li>
+                    <b>File Submission</b> : Submit the following three files:
+                    <ul>
+                        <li><b>A1.pdf</b> : Contains Q1, Q4, Q5, Q6, and  acknowledgement statement.</li>
+                        <li><b>A1.txt</b> : Contains all RA queries (Q2).</li>
+                        <li><b>A1.sql</b> : Contains all SQL queries (Q3).</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Late Submissions</b> : Late submissions will incur a penalty of <b>10% per day</b>, up to <b>3 days</b> past the deadline.
+                </li>
+            </ul>
+            <h3>Assignment Handout</h3>
+            <a class="tab" href="{{ url_for('static', filename='Assignment_1_handout.pdf') }}"><u>Assignment 1 Questions</u></a>
+        </div>
+        <br>
+        <h2>FAQ</h2>
+        <div>
+            <p class="tab">
+                Q. If the mysql portion asks for a director or actor without specifying which attributes, what should I return? <br>
+                A. Return the first name, last name.
+            </p>
+            <p class="tab">
+                Q. Is question 2 and 3 the same, but just different languages?<br>
+                A. Yes.
+            </p>
+        </div>
+{% endblock %}

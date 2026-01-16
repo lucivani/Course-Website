@@ -1,0 +1,25 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+        <h2>Course Team</h2>
+		<div class="team">
+			<div class="person">
+				<div class="name"><p>Nathanael Kevin Sitepu</p></div>
+				<div class="image"><img src="{{url_for('static', filename='3.png') }}"></div>
+				<div class="desc"><p>I am mainly responsible for the overall structure of the website, creating the website to match the desired design. I created all of the transitions in the website and handled the navigation bar. I also filled in the home, calendar, feedback, and course team page. I am also responsible for creating the dark mode customization.</p></div>
+			</div>
+			<div class="person">
+				<div class="name"><p>Lucia Giovani</p></div>
+				<div class="image"><img src="{{url_for('static', filename='1.png') }}"></div>
+				<div class="desc"><p>I have created the flask web application by writing a Python script that generates dynamic HTML responses. I have designed a Flask web application that dynamically processes user input through different routes, specifically by manipulating string provided by user input. Additionally, I have created the "Assignment" and "Labs" sections within the website, involving in designing the “Assignment” and “Labs” webpage.</p></div>
+			</div>
+			<div class="person">
+				<div class="name"><p>Shafira Devi</p></div>
+				<div class="image"><img src="{{url_for('static', filename='2.png') }}"></div>
+				<div class="desc"><p>I was responsible in making the designing decisions of the website. I created the original structure and madde significant contributions to the navigation bar and media responsiveness aspect of the website. I also helped made the user stories, mockups, and report part of the assignment.</p></div>
+			</div>
+		</div>
+{% endblock %}

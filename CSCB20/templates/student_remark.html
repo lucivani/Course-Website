@@ -1,0 +1,67 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+<h2>Remark Requests</h2>
+<div class="assignment">
+  <div class="rows">
+    <div class="remark">
+      <div id="left"><b>Account</b></div>
+      {% for remark, assignment, student in all_remark %}
+        {% if remark and assignment and student %}
+          <div>{{ student.StuAcc }}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="remark">
+      <div><b>Name</b></div>
+      {% for remark, assignment, student in all_remark %}
+        {% if remark and assignment and student %}
+          <div>{{ student.StuName }}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="remark">
+      <div><b>Assignment</b></div>
+      {% for remark, assignment, student in all_remark %}
+        {% if remark and assignment and student %}
+          <div>{{ assignment.Name }}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="remark rowr">
+      <div><b>Reason</b></div>
+      {% for remark, assignment, student in all_remark %}
+        {% if remark and assignment and student %}
+        <div>
+          <form action="{{ url_for('remark') }}" method="post">
+            <button name="id" value="{{ remark.RID }}">
+              {{ remark.Reason[:25] ~ ("..." if remark.Reason|length > 25 else "") }}
+            </button>
+          </form>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="remark">
+      <div><b>Status</b></div>
+      {% for remark, assignment, student in all_remark %}
+        {% if remark and assignment and student %}
+          <div class="status{{ remark.RID }}">{{ remark.Status }}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="remark">
+      <div id="right"><b>Submitted</b></div>
+      {% for remark, assignment, student in all_remark %}
+        {% if remark and assignment and student %}
+          <div>{{ remark.Submitted.date() }}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock %}

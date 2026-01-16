@@ -1,0 +1,69 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+        <div class="assignmenttitle">Building a Dynamic Course Website & Flask-Based Web Application: Assignment 2</div><br>
+        <h2>Details</h2>
+        <div>
+            <b>Topics Covered</b> : HTML, CSS, Python Flask, Web Development <br>
+            <b>Due Date</b> : March 12th at 11:59 <br>
+            <b>Points</b> : 105 <br>
+        </div>
+        <br>
+        <h2>Instructions and Important Notes</h2>
+        <div>
+            <h3>Group Work</h3>
+            <ul>
+                <li><b>Group Size</b> : You must work in a group of two or three</li>
+                <li>
+                    <b>Group Declaration</b> : Ensure all group members are declared in
+                    <a href="https://markus2.utsc.utoronto.ca"><u>MarkUs</u></a> before submission
+                </li>
+            </ul>
+            <h3>Acknowledgment Statement</h3>
+            <ul>
+                <li>Each group must add the following statement in Honor Code File (HonorCode.txt) and signed with your and your partner's names</li>
+                <p class="tab">
+                <em>
+                    "We (your names) pledge that this assignment represents our own work.
+                    We did not receive unauthorized help and understand the consequences of academic dishonesty. 
+                    We have also read the plagiarism section in the course info sheet of CSC B20 and understand the consequences."
+                </em>
+                </p>
+                <li><b>If this file is absent, we will not mark your assignment, and you will receive zero on the entire assignment</b></li>
+            </ul>
+            <h3>Submission Guidelines</h3>
+            <p>
+                You must submit a <b>ZIP</b> file (A2.zip) on <a href="https://markus2.utsc.utoronto.ca"><u>MarkUs</u></a>.<br>
+                <b>Folder Structure</b> : <br>
+            </p>
+            <p class="tab">
+                🗂️ A2<br>
+                &emsp; &emsp; 🗂️ MockUpAndUserStories<br>
+                &emsp; &emsp; &emsp; &emsp; 📁 mockup1.png<br>
+                &emsp; &emsp; &emsp; &emsp; 📁 userstory1.txt<br>
+                &emsp; &emsp; 🗂️ src<br>
+                &emsp; &emsp; &emsp; &emsp; 📁 index.html # Main entry page<br>
+                &emsp; &emsp; &emsp; &emsp; 📁 index.css # CSS for index.html<br>
+                &emsp; &emsp; 📁 HonorCode.txt<br>
+                &emsp; &emsp; 📁 Report.pdf<br>
+                &emsp; &emsp; 📁 Question1.py<br>
+            </p>
+            <h3>Assignment Handout</h3>
+            <a class="tab" href="{{ url_for('static', filename='Assignment_2_handout.pdf') }}"><u>Assignment 2 Questions</u></a>
+        </div>
+        <br>
+        <h2>FAQ</h2>
+        <div>
+            <p class="tab">
+                Q. Do we need to use save any data submitted in the form? <br>
+                A. No.
+            </p>
+            <p class="tab">
+                Q. Do we need to use Flask for question 2?<br>
+                A. No.
+            </p>
+        </div>
+{% endblock %}

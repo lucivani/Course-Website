@@ -1,0 +1,97 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+	<h2>Remark Requests</h2>
+	<div class="assignment">
+				<div class="rows">
+					<div class="remark">
+						<div id="left"><b>Account</b></div>
+						{% for note in all_remark %}
+							<div>{{note.Student.StuAcc}}</div>
+						{% endfor %}
+					</div>
+					<div class="remark">
+						<div><b>Name</b></div>
+						{% for note in all_remark %}
+							<div>{{ note.Student.StuName }}</div>
+						{% endfor %}
+					</div>
+					<div class="remark">
+						<div><b>Assignment</b></div>
+						{% for note in all_remark %}
+							<div>{{ note.Assignments.Name }}</div>
+						{% endfor %}
+					</div>
+					<div class="remark rowr">
+						<div><b>Reason</b></div>
+						{% for note in all_remark %}
+							<div>
+								<form action="{{ url_for('remark') }}" method="post">
+									<button name="id" value="{{note.Remarks.RID}}">{{ note.Remarks.Reason }}</button>
+								</form>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="remark">
+						<div><b>Status</b></div>
+						{% for note in all_remark %}
+							<div class="status{{note.Remarks.RID}}">{{ note.Remarks.Status }}</div>
+						{% endfor %}
+					</div>
+					<div class="remark">
+						<div id="right"><b>Submitted</b></div>
+						{% for note in all_remark %}
+							<div>{{ note.Remarks.Submitted.date() }}</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="form">
+					<div class="hidden"><b>a</b></div>
+					{% for note in all_remark %}
+						{% if note.Remarks.Status == 'Pending' %}
+							<div class="button{{note.Remarks.RID}}"><button onclick="send('Approved-{{ note.Remarks.RID }}')">Approved</button></div>
+						{% else %}
+							<div class="hidden">a</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<div class="form">
+					<div class="hidden"><b>a</b></div>
+					{% for note in all_remark %}
+						{% if note.Remarks.Status == 'Pending' %}
+							<div class="button{{note.Remarks.RID}}"><button onclick="send('Rejected-{{ note.Remarks.RID }}')">Reject</button></div>
+						{% else %}
+							<div class="hidden">a</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		function send(value) {
+            $.ajax({
+                url: '/remarkreq2',
+                type: 'POST',
+                data: { 'data': value },
+                success: function(response) {
+					var status = response.split('-')[0];
+					var id = response.split('-')[1];
+                    var div1 = document.getElementsByClassName('button' + id);
+					var i;
+					for (i = 0; i < div1.length; i++) {
+						div1[i].classList.add('hidden');
+						div1[i].innerHTML = 'a';
+					}
+					div1 = document.getElementsByClassName('status' + id)[0];
+					div1.innerHTML = status;
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+	</script>
+{% endblock %}

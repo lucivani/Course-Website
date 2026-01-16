@@ -1,0 +1,77 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+<h2>Student Grades</h2>
+
+  <div class="assignment">
+
+      <div class="rows">
+        <div class="row">
+          <div id="left"><b>Assignment</b></div>
+          {% for a in assignments %}
+              <div>{{ a.Name }}</div>
+          {% endfor %}
+        </div>
+        <div class="row">
+          <div><b>Submitted</b></div>
+          {% for a in assignments %}
+              <div>{{ a.Submitted.date() }}</div>
+          {% endfor %}
+        </div>
+        <div class="row">
+          <div id="right"><b>Score </b></div>
+          {% for a in assignments %}
+              <div class="{{a.AID}}">{{ a.Marks }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="form">
+        <div class="hidden"><b>a</b></div>
+        {% for a in assignments %}
+            <div class="remark-form" data-aid="{{ a.AID }}">
+              <button class="open-remark">Submit Remark Request</button>
+              <div class="remark-input">
+                <textarea placeholder="Enter reason..." class="textarea"></textarea>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+
+  </div>
+
+{% if not assignments %}
+<h3> You don't have any grades published yet</h3>
+{% endif %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $(".open-remark").click(function () {
+	  $(this).css('display', 'none');
+      $(this).siblings(".remark-input").css('display', 'block');
+    });
+
+    function insert(a) {
+      let wrapper = $(a).closest(".remark-form");
+      let aid = wrapper.data("aid");
+      let reason = wrapper.find("textarea").val();
+	  console.log(wrapper);
+	  console.log(reason);
+      $.post("/submit_remark", { aid: aid, reason: reason }, function (response) {
+        wrapper.html("<p><b>Request submitted successfully!</b></p>");
+      }).fail(function (response) {
+        alert(response.responseText);
+      });
+    };
+	
+	$('.textarea').keydown(function(event) {
+						if (event.key === 'Enter') {
+							insert(this);
+						}
+					});
+  });
+</script>
+{% endblock %}

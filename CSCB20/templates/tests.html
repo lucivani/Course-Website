@@ -1,0 +1,19 @@
+{% if session.type== 'student' %}
+	{% extends "template_student.html" %}
+{% else %}
+	{% extends "template.html" %}
+{% endif %}
+{% block content %}
+        <h2>Tests</h2>
+        <div>
+            <span class="h2">Midterm</span>
+            <p>There will be one midterm. The midterm will be 90min in length.</p>
+            <p class="tab"><b>Date:</b> Friday, 28 February @5:00 PM</p>
+            <p class="tab"><b>Room:</b> HL 170</p>
+            <p class="tab"><b>Past midterm: </b><a href="pastpaper.pdf"><u>click here</u></a></p>
+            <span class="h2">Final Test</span>
+            <p>The final test will be held during the Final Weeks. The time and room allocation will be published by UTSC Registrar Office.</p>
+            <p class="tab"><b>Date:</b> Wednesday, 23 April @2:00 PM</p>
+            <p class="tab"><b>Room:</b> HL 170</p>
+        </div>
+{% endblock %}
